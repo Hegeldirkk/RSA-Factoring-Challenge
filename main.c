@@ -11,7 +11,7 @@
 int main(int argc, char *argv[])
 {
 	FILE *rd_f /*__attribute__((unused))*/;
-	unsigned long int buf;
+	unsigned long long int buf __attribute__((unused));
 	size_t len = 0;
 	ssize_t nread;
 	char *buffer = NULL, *ptr;
@@ -22,22 +22,17 @@ int main(int argc, char *argv[])
 		exit(97);
 	}
 	rd_f = fopen(argv[1], "r");
-	if (rd_f == NULL)
+	if (!rd_f)
 	{
 		printf("Failed to open file and read it.\n");
 		exit(1);
 	}
-	/*buf = malloc(sizeof(int));*/
 	while ((nread = getline(&buffer, &len, rd_f)) != -1)
 	{
 		fwrite(buffer, nread, 1, stdin);
-		buf = strtol(buffer, &ptr, 10);
-		/*printf("size of= %ld\n", sizeof(buf));*/
-		factor(buf);
+		factor(strtol(buffer, &ptr, 10));
 	}
 	fclose(rd_f);
 	free(buffer);
-	/*printf("Value of *ip variable: %d\n", buf);
-	factor(buf);*/
 	exit(EXIT_SUCCESS);
 }

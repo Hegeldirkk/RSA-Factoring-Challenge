@@ -8,6 +8,6 @@
 #include <fcntl.h>
 
 /*Function that factorize and prints number*/
-int factor(unsigned long int number);
+int factor(unsigned long long int number);
 
 #endif
