@@ -6,6 +6,7 @@
 #include <unistd.h>
 #include <sys/stat.h>
 #include <fcntl.h>
+/*#include <gmp.h>*/
 
 /*Function that factorize and prints number*/
 int factor(unsigned long long int number);
